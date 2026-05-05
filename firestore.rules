@@ -1,0 +1,101 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      // In a real app, we would check a dedicated admin collection
+      // For this demo context, we'll allow the user who set up the app
+      // or check for a specific email if provided. 
+      // For now, let's assume existence in an 'admins' collection.
+      return isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // --- Members ---
+    match /members/{memberId} {
+      allow read: if isSignedIn() && (isOwner(memberId) || isAdmin());
+      allow create: if isSignedIn() && isOwner(memberId) &&
+        incoming().keys().hasAll(['uid', 'email', 'ageCategory']) &&
+        incoming().uid == request.auth.uid;
+      allow update: if isSignedIn() && (isOwner(memberId) || isAdmin()) &&
+        (isAdmin() || incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'ageCategory', 'progressionLevel', 'updatedAt']));
+    }
+
+    // --- Programs ---
+    match /programs/{programId} {
+      allow read: if true; // Public catalogs
+      allow write: if isAdmin();
+    }
+
+    // --- Membership Plans ---
+    match /membership_plans/{planId} {
+      allow read: if true; // Public pricing
+      allow write: if isAdmin();
+    }
+
+    // --- Bookings ---
+    match /bookings/{bookingId} {
+      allow read: if isSignedIn() && (isOwner(existing().memberId) || isAdmin());
+      allow list: if isSignedIn() && (resource.data.memberId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && isOwner(incoming().memberId);
+      allow update, delete: if isAdmin();
+    }
+
+    // --- Workout Plans ---
+    match /workout_plans/{planId} {
+      allow read: if isSignedIn() && (isOwner(existing().memberId) || isAdmin());
+      allow create: if isSignedIn() && (isOwner(incoming().memberId) || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // --- Site Content ---
+    match /site_content/{contentId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // --- Products ---
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // --- Orders ---
+    match /orders/{orderId} {
+      allow read: if isSignedIn() && (isOwner(existing().memberId) || isAdmin());
+      allow list: if isSignedIn() && (resource.data.memberId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && isOwner(incoming().memberId);
+      allow update: if isAdmin(); // Total control by admin
+    }
+
+    // --- Admins collection ---
+    match /admins/{adminId} {
+      allow read: if isSignedIn();
+      allow write: if false; // System managed or manually set in console
+    }
+  }
+}

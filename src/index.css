@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Anton", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand: #f36103;
+  --color-brand-light: #ff7e2e;
+  --color-brand-dark: #c24d00;
+  
+  --color-dark: #151515;
+  --color-dark-lighter: #1a1a1a;
+  --color-dark-lightest: #222222;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white antialiased selection:bg-brand selection:text-black;
+  }
+}
+
+@layer utilities {
+  .text-massive {
+    @apply text-[15vw] md:text-[18vw] leading-[0.82] tracking-[-0.04em] uppercase font-display;
+  }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+  
+  .hardware-card {
+    @apply bg-[#151619] border border-white/5 shadow-2xl;
+  }
+  
+  .text-shadow-glow {
+    text-shadow: 0 0 20px rgba(243, 97, 3, 0.4);
+  }
+
+  .section-title {
+    @apply text-center mb-16;
+  }
+
+  .section-title span {
+    @apply text-brand font-black uppercase tracking-[0.3em] text-xs mb-3 block;
+  }
+
+  .section-title h2 {
+    @apply text-4xl md:text-5xl font-display uppercase italic tracking-tighter;
+  }
+
+  .premium-button {
+    @apply px-10 py-4 bg-brand text-white font-black uppercase tracking-widest text-xs hover:bg-brand-light transition-all active:scale-95;
+  }
+
+  .card-hover-effect {
+    @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(243,97,3,0.2)];
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-1;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-brand/20 hover:bg-brand/40 transition-colors;
+  }
+}
+
+.cms-content h1 { @apply text-5xl font-black mb-6 italic uppercase tracking-tighter; }
+.cms-content h2 { @apply text-4xl font-extrabold mb-4 italic uppercase tracking-tight; }
+.cms-content p { @apply text-lg mb-6 text-zinc-400 leading-relaxed max-w-2xl; }
