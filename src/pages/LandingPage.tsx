@@ -51,10 +51,14 @@ const LandingPage = () => {
   ];
 
   const services = [
-    { title: 'Training Programmes', icon: <Activity />, desc: 'Customized training paths for peak performance.' },
-    { title: 'Meal Plans', icon: <Brain />, desc: 'Nutrition strategies built for your body goals.' },
-    { title: 'Personal Training', icon: <UserCheck />, desc: '1-on-1 elite coaching and dedicated PT sessions.' },
-    { title: 'Recuperation', icon: <ShieldAlert />, desc: 'Specialized recovery and injury rehabilitation.' },
+    { title: 'Training Programmes', icon: <Activity />, desc: 'Customized training paths for peak performance. KES 1,000' },
+    { title: 'Meal Plans', icon: <Brain />, desc: 'Nutrition strategies built for your body goals. KES 1,000' },
+    { title: 'Personal Training (PT)', icon: <UserCheck />, desc: '1-on-1 elite coaching and dedicated sessions. KES 4,000/mo' },
+    { title: 'Strength & Conditioning', icon: <Dumbbell />, desc: 'Elite power and performance development.' },
+    { title: 'Cardio Classes', icon: <Zap />, desc: 'High-intensity physical and online cardio sessions.' },
+    { title: 'Body Goals', icon: <Target />, desc: 'Weight loss, muscle building, and transformation.' },
+    { title: 'Injury Recovery', icon: <ShieldAlert />, desc: 'Specialized recovery and injury rehabilitation.' },
+    { title: 'Deep Tissue Stretches', icon: <Flame />, desc: 'Advanced mobility and muscle recovery work.' },
   ];
 
   return (
@@ -167,7 +171,7 @@ const LandingPage = () => {
             onClick={handleLogin}
             className="bg-black text-white px-12 py-5 font-black uppercase tracking-widest text-sm hover:bg-[#222222] transition-all"
           >
-            {user ? 'DASHBOARD' : 'APPOINTMENT'}
+            {user ? 'DASHBOARD' : 'JOIN THE TRIBE'}
           </button>
         </div>
       </section>
@@ -239,7 +243,7 @@ const LandingPage = () => {
             <h2>Choose Your Pricing Plan</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <PriceCard 
               tier="IRON CUBS" 
               price="150" 
@@ -262,6 +266,14 @@ const LandingPage = () => {
               price="500"
               unit="/session"
               features={['House of Pain Access', 'Advanced Strength', 'Nutritional Forge', 'Tactical Camps', 'Unlimited equipments']}
+              user={user}
+              onEnroll={handleLogin}
+            />
+            <PriceCard 
+              tier="ELITE COACHING" 
+              price="4,000"
+              unit="/month"
+              features={['Personal Trainer', 'Custom Workout cycles', 'Bi-weekly Checkins', 'Premium Support', 'Meal Plan Included']}
               user={user}
               onEnroll={handleLogin}
             />
@@ -290,7 +302,7 @@ const LandingPage = () => {
               <input type="text" placeholder="Name" className="w-full bg-[#1a1a1a] border border-white/5 p-4 outline-none focus:border-brand transition-all" />
               <input type="email" placeholder="Email" className="w-full bg-[#1a1a1a] border border-white/5 p-4 outline-none focus:border-brand transition-all" />
               <textarea placeholder="Comment" className="w-full bg-[#1a1a1a] border border-white/5 p-4 outline-none focus:border-brand transition-all min-h-[150px]"></textarea>
-              <button className="premium-button w-full">Submit Now</button>
+              <button className="premium-button w-full">BOOK APPOINTMENT</button>
             </form>
           </div>
         </div>
