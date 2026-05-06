@@ -67,9 +67,10 @@ const LandingPage = () => {
       <section className="relative h-screen flex items-center pt-20">
         <div className="absolute inset-0 z-0">
           <img 
-            src={siteText.hero_image?.imageUrl || "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070"} 
+            src={siteText.hero_image?.imageUrl || "https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?q=80&w=2070"} 
             className="w-full h-full object-cover opacity-40" 
             alt="Hero Background"
+            fetchpriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent"></div>
         </div>
@@ -141,6 +142,8 @@ const LandingPage = () => {
                 <img 
                   src={siteText[`service_${idx}_image`]?.imageUrl || (service as any).image} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  alt={service.title}
                 />
                 <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="text-brand mb-4">
@@ -313,7 +316,7 @@ const LandingPage = () => {
 
 const ProgramCard = ({ title, desc, img, category }: { title: string, desc: string, img: string, category: string }) => (
   <div className="relative aspect-[4/3] overflow-hidden group rounded-lg">
-    <img src={img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+    <img src={img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" alt={title} />
     <div className="absolute inset-0 bg-black/50 group-hover:bg-brand/80 transition-all duration-500 flex flex-col justify-end p-8">
       <span className="text-brand group-hover:text-black font-black text-xs uppercase tracking-widest mb-2 transition-colors">{category}</span>
       <h3 className="text-3xl font-black italic uppercase text-white group-hover:text-black transition-colors mb-4">{title}</h3>
@@ -324,7 +327,7 @@ const ProgramCard = ({ title, desc, img, category }: { title: string, desc: stri
 
 const TrainerCard = ({ name, role, img }: { name: string, role: string, img: string }) => (
   <div className="relative aspect-[4/5] overflow-hidden group">
-    <img src={img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+    <img src={img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" alt={name} />
     <div className="absolute inset-x-0 bottom-0 p-8 text-center bg-black/80 backdrop-blur-sm border-t-2 border-brand transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
       <h3 className="text-xl font-black uppercase italic mb-1">{name}</h3>
       <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest">{role}</p>
