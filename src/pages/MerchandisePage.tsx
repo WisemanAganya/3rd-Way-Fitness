@@ -48,15 +48,15 @@ const MerchandisePage = () => {
       
       if (items.length === 0) {
         const seed = [
-          { name: 'Elite Training Tee', description: 'Heavyweight cotton, premium breathability.', price: 1800, category: 'Apparel', imageUrl: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000', stock: 50 },
-          { name: 'Iron Grit Hoodie', description: 'Oversized fleece, high-density print.', price: 3500, category: 'Apparel', imageUrl: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1000', stock: 30 },
+          { name: 'Elite Training Tee', description: 'Heavyweight cotton, premium breathability.', price: 1800, category: 'Apparel', imageUrl: '/assets/svc/armory/elite training tee.PNG', stock: 50 },
+          { name: 'Iron Grit Hoodie', description: 'Oversized fleece, high-density print.', price: 3500, category: 'Apparel', imageUrl: '/assets/svc/armory/iron grit hoodie.PNG', stock: 30 },
           { name: 'Combat Gloves', description: 'Impact-absorbing foam, reinforced wrist.', price: 2500, category: 'Training Gear', imageUrl: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=1000', stock: 20 },
-          { name: 'Performance Shorts', description: 'Strategic ventilation for max mobility.', price: 2200, category: 'Apparel', imageUrl: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=1000', stock: 40 },
-          { name: 'Lifting Straps', description: 'Heavy-duty webbing for maximum grip.', price: 1200, category: 'Training Gear', imageUrl: 'https://images.unsplash.com/photo-1620188467120-5042ed1eb5da?q=80&w=1000', stock: 100 },
-          { name: 'Compression Sleeves', description: 'Graduated compression for elite recovery.', price: 1500, category: 'Accessories', imageUrl: 'https://images.unsplash.com/photo-1611676279444-5577698aa13c?q=80&w=1000', stock: 60 },
+          { name: 'Performance Shorts', description: 'Strategic ventilation for max mobility.', price: 2200, category: 'Apparel', imageUrl: '/assets/svc/armory/performance shorts.PNG', stock: 40 },
+          { name: 'Lifting Straps', description: 'Heavy-duty webbing for maximum grip.', price: 1200, category: 'Training Gear', imageUrl: '/assets/svc/armory/lifting straps.PNG', stock: 100 },
+          { name: 'Compression Sleeves', description: 'Graduated compression for elite recovery.', price: 1500, category: 'Accessories', imageUrl: '/assets/svc/armory/compression sleeves.PNG', stock: 60 },
           { name: '3RD WAY Elite Cap', description: 'Precision needlework, moisture-wicking.', price: 1000, category: 'Accessories', imageUrl: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=1000', stock: 80 },
           { name: 'Warrior Trainers', description: 'Dynamic stability for heavy compound lifts.', price: 8500, category: 'Footwear', imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000', stock: 15 },
-          { name: 'Hand Wraps', description: '180-inch semi-elastic protection.', price: 800, category: 'Training Gear', imageUrl: 'https://images.unsplash.com/photo-1626071759296-6e5a6fc65f80?q=80&w=1000', stock: 50 },
+          { name: 'Hand Wraps', description: '180-inch semi-elastic protection.', price: 800, category: 'Training Gear', imageUrl: '/assets/svc/armory/hand wraps.PNG', stock: 50 },
         ];
         setProducts(seed.map((s, i) => ({ ...s, id: `seed-${i}` })));
       } else {
@@ -189,6 +189,7 @@ const MerchandisePage = () => {
                     alt={p.name} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                   <div className="absolute top-6 right-6">
                     <span className="px-3 py-1 glass-card rounded-full text-[10px] font-black uppercase tracking-widest">
