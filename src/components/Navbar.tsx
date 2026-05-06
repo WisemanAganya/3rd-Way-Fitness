@@ -39,7 +39,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center gap-2 group">
+            <Link to="/" className="flex items-center gap-3 group">
+              <img src="/assets/svc/logo.jpeg" alt="3RD WAY FITNESS" className="w-10 h-10 object-cover rounded-sm border border-brand/30" />
               <span className="text-2xl font-black tracking-tighter text-white uppercase italic">
                 3RD <span className="text-brand group-hover:text-white transition-colors">WAY</span> FITNESS
               </span>

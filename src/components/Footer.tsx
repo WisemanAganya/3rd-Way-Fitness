@@ -9,7 +9,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-16">
           {/* Logo & Info */}
           <div className="space-y-8">
-            <Link to="/" className="inline-block group">
+            <Link to="/" className="flex items-center gap-4 group">
+              <img src="/assets/svc/logo.jpeg" alt="3RD WAY FITNESS" className="w-12 h-12 object-cover rounded-sm border border-brand/30" />
               <span className="text-3xl font-black tracking-tighter text-white uppercase italic">
                 3RD <span className="text-brand group-hover:text-white transition-colors">WAY</span> FITNESS
               </span>

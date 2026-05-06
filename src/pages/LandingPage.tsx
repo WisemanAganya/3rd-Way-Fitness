@@ -51,14 +51,14 @@ const LandingPage = () => {
   ];
 
   const services = [
-    { title: 'Training Programmes', icon: <Activity />, desc: 'Customized training paths for peak performance. KES 1,000' },
-    { title: 'Meal Plans', icon: <Brain />, desc: 'Nutrition strategies built for your body goals. KES 1,000' },
-    { title: 'Personal Training (PT)', icon: <UserCheck />, desc: '1-on-1 elite coaching and dedicated sessions. KES 4,000/mo' },
-    { title: 'Strength & Conditioning', icon: <Dumbbell />, desc: 'Elite power and performance development.' },
-    { title: 'Cardio Classes', icon: <Zap />, desc: 'High-intensity physical and online cardio sessions.' },
-    { title: 'Body Goals', icon: <Target />, desc: 'Weight loss, muscle building, and transformation.' },
-    { title: 'Injury Recovery', icon: <ShieldAlert />, desc: 'Specialized recovery and injury rehabilitation.' },
-    { title: 'Deep Tissue Stretches', icon: <Flame />, desc: 'Advanced mobility and muscle recovery work.' },
+    { title: 'Training Programmes', icon: <Activity />, desc: 'Customized training paths for peak performance. KES 1,000', image: '/assets/svc/trainning programmes.PNG' },
+    { title: 'Meal Plans', icon: <Brain />, desc: 'Nutrition strategies built for your body goals. KES 1,000', image: '/assets/svc/meal plan.PNG' },
+    { title: 'Personal Training (PT)', icon: <UserCheck />, desc: '1-on-1 elite coaching and dedicated sessions. KES 4,000/mo', image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1000' },
+    { title: 'Strength & Conditioning', icon: <Dumbbell />, desc: 'Elite power and performance development.', image: '/assets/svc/strength conditioning.PNG' },
+    { title: 'Cardio Classes', icon: <Zap />, desc: 'High-intensity physical and online cardio sessions.', image: '/assets/svc/cardio classes.PNG' },
+    { title: 'Body Goals', icon: <Target />, desc: 'Weight loss, muscle building, and transformation.', image: '/assets/svc/body goals.PNG' },
+    { title: 'Injury Recovery', icon: <ShieldAlert />, desc: 'Specialized recovery and injury rehabilitation.', image: '/assets/svc/injury recovery.PNG' },
+    { title: 'Deep Tissue Stretches', icon: <Flame />, desc: 'Advanced mobility and muscle recovery work.', image: '/assets/svc/deep tissue stretches.PNG' },
   ];
 
   return (
@@ -139,7 +139,7 @@ const LandingPage = () => {
             {services.map((service, idx) => (
               <div key={idx} className="relative aspect-[4/5] overflow-hidden group">
                 <img 
-                  src={siteText[`service_${idx}_image`]?.imageUrl || `https://images.unsplash.com/photo-${idx === 0 ? '1581009146145-b5ef03a7403f' : idx === 1 ? '1547524513-3058c4943dc5' : idx === 2 ? '1571019614242-c5c5dee9f50b' : '1591033594798-33227a05780d'}?q=80&w=1000`} 
+                  src={siteText[`service_${idx}_image`]?.imageUrl || (service as any).image} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -219,17 +219,17 @@ const LandingPage = () => {
             <TrainerCard 
               name="Caleb Malemo"
               role="Head Coach & Founder"
-              img="https://images.unsplash.com/photo-1567013127542-490d757e51fe?q=80&w=1000"
+              img="/assets/svc/caleb malemo.PNG"
             />
             <TrainerCard 
-              name="Sarah Wanjiku"
+              name="Sharon Wanjiku"
               role="Nutrition Specialist"
-              img="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=1000"
+              img="/assets/svc/sharon wanjiku.PNG"
             />
             <TrainerCard 
               name="David Otieno"
               role="Strength Coach"
-              img="https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?q=80&w=1000"
+              img="/assets/svc/david otieno.PNG"
             />
           </div>
         </div>
